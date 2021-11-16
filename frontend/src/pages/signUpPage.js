@@ -4,19 +4,20 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "@mui/material";
+import axios from "axios"
 
 const SignUpPage = () => {
     const navigate = useNavigate();
     const [userEmail, setUserEmail] = useState("");
     const [userPw, setUserPw] = useState("");
 
-    const signUp = () => {
+    const signUp = async() => {
         try {
             //응답 성공 
             const response = await axios.post('localhsot:8080/sign-up',{
                 //보내고자 하는 데이터 
-                email: userEmail,
-                pw, userPw
+                "email": userEmail,
+                "pw": userPw
             });
             console.log(response);
           } catch (error) {
