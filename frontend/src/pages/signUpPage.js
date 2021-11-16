@@ -13,7 +13,7 @@ const SignUpPage = () => {
     const signUp = () => {
         try {
             //응답 성공 
-            const response = await axios.post('localhsot:8080',{
+            const response = await axios.post('localhsot:8080/sign-up',{
                 //보내고자 하는 데이터 
                 email: userEmail,
                 pw, userPw
