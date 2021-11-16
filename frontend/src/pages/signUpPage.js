@@ -11,13 +11,19 @@ const SignUpPage = () => {
     const [userPw, setUserPw] = useState("");
 
     const signUp = () => {
-        const saved = localStorage.getItem("userList");
-        const newUserList = JSON.parse(saved) || [];
-        newUserList.push(
-            userEmail+userPw
-        );
-        localStorage.setItem("userList", JSON.stringify(newUserList));
-        navigate("/");
+        try {
+            //응답 성공 
+            const response = await axios.post('localhsot:8080',{
+                //보내고자 하는 데이터 
+                email: userEmail,
+                pw, userPw
+            });
+            console.log(response);
+          } catch (error) {
+            //응답 실패
+            console.error(error);
+          }
+        navigate("/sign-in");
     }
 
     return (

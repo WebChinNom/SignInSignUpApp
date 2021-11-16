@@ -4,32 +4,30 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { ButtonGroup } from "@mui/material";
+import axios from "axios"
 
 const SignInPage = () => {
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState("");
   const [userPw, setUserPw] = useState("");
 
-  const judgeUser = () => {
-    const saved = localStorage.getItem("userList");
-    if (saved.includes(userEmail + userPw)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   const signIn = () => {
-    if (judgeUser()) {
-      navigate("/memoList");
-    } else {
-      alert("아이디와 비밀번호가 일치하지 않습니다.");
-      window.location.reload();
+    try {
+      //응답 성공 
+      const response = await axios.post('localhsot:8080',{
+          //보내고자 하는 데이터 
+          email: userEmail,
+          pw, userPw
+      });
+      console.log(response);
+    } catch (error) {
+      //응답 실패
+      console.error(error);
     }
   }
 
   const navigateSignUp = () => {
-    navigate("/signUp");
+    navigate("/sign-up");
   }
 
   const consoleLog = () => {
