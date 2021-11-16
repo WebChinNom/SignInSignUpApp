@@ -11,21 +11,37 @@ const SignUpPage = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPw, setUserPw] = useState("");
 
-    const signUp = async() => {
-        try {
-            //응답 성공 
-            const response = await axios.post('localhsot:8080/sign-up',{
-                //보내고자 하는 데이터 
-                "email": userEmail,
-                "pw": userPw
-            });
-            console.log(response);
-          } catch (error) {
-            //응답 실패
-            console.error(error);
+    // const signUp = async() => {
+    //     try {
+    //         //응답 성공 
+    //         const response = await axios.post('localhsot:8080/sign-up',{
+    //             //보내고자 하는 데이터 
+    //             "email": userEmail,
+    //             "pw": userPw
+    //         });
+    //         console.log(response);
+    //       } catch (error) {
+    //         //응답 실패
+    //         console.error(error);
+    //       }
+    //     navigate("/sign-in");
+    // }
+
+    const signUp = () => {
+        axios.post("http://localhost:8080/sign-up", {
+          email: userEmail,
+          pw: userPw
+        }).then(function (response) {
+          if (!response.data.success) {
+            alert("폼 제출에 실패하였습니다.")
+          } else {
+            console.log(response.data)
           }
-        navigate("/sign-in");
-    }
+        })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
 
     return (
         <div>
