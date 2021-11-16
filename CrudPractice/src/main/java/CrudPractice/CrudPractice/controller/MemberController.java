@@ -5,15 +5,15 @@ import CrudPractice.CrudPractice.dto.SignInRequestDTO;
 import CrudPractice.CrudPractice.dto.SignInResponseDTO;
 import CrudPractice.CrudPractice.dto.SignUpRequestDTO;
 import CrudPractice.CrudPractice.dto.SignUpResponseDTO;
-import CrudPractice.CrudPractice.repository.MemberRepository;
 import CrudPractice.CrudPractice.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @AllArgsConstructor
 public class MemberController {

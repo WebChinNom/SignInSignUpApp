@@ -17,7 +17,7 @@ public class MemberService {
 
     public Optional<Member> findOne(String email){
         Optional<Member> byEmail = memberRepository.findByEmail(email);
-        return byEmail;p
+        return byEmail;
     }
     public String join(Member member) {
         validateDuplicateMember(member);
